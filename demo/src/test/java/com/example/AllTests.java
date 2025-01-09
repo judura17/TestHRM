@@ -82,6 +82,7 @@ public class AllTests {
         assertEquals(recruitmentPage.messageStatusget(""), "Status: Hired");
         // Proceso de validacion de postulado contratado
         recruitmentPage.clickMenuRecruitment();
+        recruitmentPage.checkRecruitmentFormStatus();
 
     }
 

@@ -8,6 +8,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
+import java.util.List;
 
 public class BasePage {
     protected WebDriver driver;
@@ -63,6 +64,22 @@ public class BasePage {
     // Funcion para establecer una espera implicita
     public void setImplicitWait(int seconds) {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(seconds));
+    }
+
+    // Método que recorre una lista de divs y obtiene los textos de la fila
+    public void checkNameAndStatusInDivs(String divLocator) {
+        // Localizamos todos los divs según el locator pasado como argumento
+        List<WebElement> divs = driver.findElements(By.cssSelector(divLocator));
+
+        // Recorremos la lista de divs
+        for (WebElement div : divs) {
+            String divText = div.getText().toLowerCase(); // Obtenemos el texto en minúsculas para comparaciones
+
+            // Verificamos si la palabra "nombre" y "status" están presentes en el mismo div
+            if (divText.contains("Oscar Julian Duque Ramos") && divText.contains("Hired")) {
+                System.out.println("Se encontró un div con 'Oscar Julian Duque Ramos' y 'Hired': " + divText);
+            }
+        }
     }
 
 }

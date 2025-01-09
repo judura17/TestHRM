@@ -20,7 +20,7 @@ public class RecruitmentPage extends BasePage {
     private By emailField = By.xpath(("//label[contains(text(), 'Email')]//following::input"));
     private By phoneField = By.xpath(("//label[contains(text(), 'Contact Number')]//following::input"));
     private By fileUpload = By.xpath(("//input[@type='file']"));
-    private By calendarChoose = By.xpath(("//input[@placeholder='yyyy-mm-dd']"));
+    private By calendarChoose = By.xpath(("//input[@placeholder='yyyy-dd-mm']"));
     private By todayChoose = By.cssSelector(".\\--today");
     private By sendCandidate = By.xpath(("//button[@type='submit']"));
     private By shortListButton = By.xpath(("//button[contains(.,'Shortlist')]"));
@@ -29,12 +29,13 @@ public class RecruitmentPage extends BasePage {
     private By intreviewTitleField = By.xpath(("//label[contains(.,'Interview Title')]//following::input"));
     private By intreviewerField = By.xpath(("//label[contains(.,'Interviewer')]//following::input"));
     private By dropdownLocator = By.xpath(("//label[contains(.,'Date')]//preceding::input"));
-    private By dateChoose = By.xpath(("//input[@placeholder='yyyy-mm-dd']"));
+    private By dateChoose = By.xpath(("//input[@placeholder='yyyy-dd-mm']"));
     private By timeChoose = By.xpath(("//input[@placeholder='hh:mm']"));
     private By markIntreviewPassedButton = By.xpath(("//button[contains(.,'Passed')]"));
     private By offerJobButton = By.xpath(("//button[contains(.,'Offer Job')]"));
     private By hireButton = By.xpath(("//button[contains(.,'Hire')]"));
     private By getStatusMessage = By.xpath(("//p[contains(.,'Status: Hired')]"));
+    private By rowSearch = By.xpath(("//div[@role='row']"));
 
     // Constructor que hereda de la clase BasePage
     public RecruitmentPage(WebDriver driver) {
@@ -156,6 +157,11 @@ public class RecruitmentPage extends BasePage {
         waitForElement(getStatusMessage, Duration.ofSeconds(30));
         return getText(getStatusMessage);
 
+    }
+
+    public void checkRecruitmentFormStatus() {
+        waitForElement(rowSearch, Duration.ofSeconds(30));
+        System.out.println(rowSearch);
     }
 
 }
